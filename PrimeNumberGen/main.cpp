@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include "Eratosthenes.h"
-
+#include "Sundaram.h"
 
 
 
@@ -16,9 +16,17 @@ int main()
 	Eratosthenes erat(n);
 	// Run
 	erat.Sieve();
+	cout << "Eratosthenes:" << endl;
 	for (auto &i : erat.result)
 		cout << i << endl;
 
+	// Create sundaram sieve
+	Sundaram sund(n);
+	// Run
+	sund.Sieve();
+	cout << "Sundaram:" << endl;
+	for (auto &i : sund.result)
+		cout << i << endl;
 	// Keep window open
 	getchar();
 	return 0;

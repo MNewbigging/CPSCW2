@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "..\PrimeNumberGen\Eratosthenes.cpp"
+#include "..\PrimeNumberGen\Sundaram.cpp"
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace SieveTests
 {
-	TEST_CLASS(EratosthenesTestClass)
+	TEST_CLASS(SundaramTest)
 	{
 	public:
 		// Ensures constructor works; all member variables are set 
@@ -15,22 +15,22 @@ namespace SieveTests
 		TEST_METHOD(FunctionVariablesInitOk)
 		{
 			// Call constructor, pass in test limit number
-			Eratosthenes e(20);
+			Sundaram s(20);
 			// Ensure that it was set correctly
 			Assert assert;
-			assert.AreEqual(20, e.n);
+			assert.AreEqual(20, s.n);
 			// Run alg
-			e.Sieve();
+			s.Sieve();
 			// Ensure result is not empty
-			assert.AreNotEqual(0, (int)e.result.size());
+			assert.AreNotEqual(0, (int)s.result.size());
 		}
 
 		TEST_METHOD(CorrectPrimesTo20)
 		{
 			// Set limit to 20 in constructor
-			Eratosthenes e(20);
+			Sundaram s(20);
 			// Run alg
-			e.Sieve();
+			s.Sieve();
 			// Create correct results to check against
 			vector<int> checkResult;
 			checkResult.push_back(2);
@@ -45,7 +45,7 @@ namespace SieveTests
 			Assert assert;
 			for (int i = 0; i < checkResult.size(); i++)
 			{
-				int actual = e.result[i];
+				int actual = s.result[i];
 				int check = checkResult[i];
 				assert.AreEqual(check, actual);
 			}
