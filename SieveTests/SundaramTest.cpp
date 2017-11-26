@@ -18,7 +18,7 @@ namespace SieveTests
 			Sundaram s(20);
 			// Ensure that it was set correctly
 			Assert assert;
-			assert.AreEqual(20, s.n);
+			assert.AreEqual(20, s.limit);
 			// Run alg
 			s.Sieve();
 			// Ensure result is not empty

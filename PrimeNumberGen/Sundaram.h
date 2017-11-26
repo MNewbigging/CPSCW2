@@ -8,11 +8,11 @@ class Sundaram
 {
 public:
 	// Construtor takes in test limit
-	Sundaram(int limit) { n = limit; }
+	Sundaram(int n) { limit = n; }
 	~Sundaram() {}
 
 	// Hold test limit number
-	int n;
+	int limit;
 	// Hold a list of bools representing numbers til test limit
 	vector<bool> primes;
 	// List of final prime numbers

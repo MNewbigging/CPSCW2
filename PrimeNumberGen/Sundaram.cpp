@@ -6,7 +6,7 @@
 void Sundaram::Sieve()
 {
 	// Half n
-	int nNew = (n - 2) / 2;
+	int nNew = (limit - 2) / 2;
 	// Prep prime bools list
 	for (int i = 0; i < nNew + 1; i++)
 	{

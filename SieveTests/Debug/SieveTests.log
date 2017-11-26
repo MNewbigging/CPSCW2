@@ -1,5 +1,5 @@
-﻿  SundaramTest.cpp
-c:\users\mrnew\documents\github\cpscw2\sievetests\sundaramtest.cpp(46): warning C4018: '<': signed/unsigned mismatch
+﻿  AtkinTest.cpp
+c:\users\mrnew\documents\github\cpscw2\sievetests\atkintest.cpp(46): warning C4018: '<': signed/unsigned mismatch
      Creating library C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.lib and object C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.exp
   SieveTests.vcxproj -> C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.dll
   SieveTests.vcxproj -> C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.pdb (Partial PDB)

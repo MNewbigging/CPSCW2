@@ -18,7 +18,7 @@ namespace SieveTests
 			Eratosthenes e(20);
 			// Ensure that it was set correctly
 			Assert assert;
-			assert.AreEqual(20, e.n);
+			assert.AreEqual(20, e.limit);
 			// Run alg
 			e.Sieve();
 			// Ensure result is not empty

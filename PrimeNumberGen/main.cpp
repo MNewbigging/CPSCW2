@@ -3,7 +3,7 @@
 
 #include "Eratosthenes.h"
 #include "Sundaram.h"
-
+#include "Atkin.h"
 
 
 
@@ -27,6 +27,17 @@ int main()
 	cout << "Sundaram:" << endl;
 	for (auto &i : sund.result)
 		cout << i << endl;
+
+
+	// Create atkin sieve
+	Atkin a(n);
+	// Run
+	a.Sieve();
+	cout << "Atkin:" << endl;
+	for (auto &i : a.result)
+		cout << i << endl;
+
+
 	// Keep window open
 	getchar();
 	return 0;
