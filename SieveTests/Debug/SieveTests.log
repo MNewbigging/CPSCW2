@@ -1,3 +1,5 @@
-﻿  AtkinTest.cpp
+﻿  EratosthenesThreadsTest.cpp
+c:\users\mrnew\documents\github\cpscw2\primenumbergen\eratosthenesthreads.cpp(32): warning C4018: '<': signed/unsigned mismatch
+c:\users\mrnew\documents\github\cpscw2\sievetests\eratosthenesthreadstest.cpp(48): warning C4101: 'assert': unreferenced local variable
   SieveTests.vcxproj -> C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.dll
   SieveTests.vcxproj -> C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\SieveTests.pdb (Partial PDB)

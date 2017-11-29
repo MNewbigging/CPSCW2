@@ -2,7 +2,9 @@
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Atkin.cpp"
 #include <fstream>
+#include <chrono>
 
+using namespace std::chrono;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace SieveTests
@@ -71,5 +73,24 @@ namespace SieveTests
 			assert.AreEqual(11, a.result[4]);
 			assert.AreEqual(17, a.result[6]);
 		}
+	
+		// Gather timing data for baseline performance
+		TEST_METHOD(AtkinsBaselinePerformance)
+		{
+			Atkin a(1000000);
+			// Only time Sieve method 10 times
+			ofstream AtkinResults("AtkinBaseline.csv", ofstream::app);
+			for (int i = 0; i < 10; i++)
+			{
+				a.Setup();
+				auto start = system_clock::now();
+				a.Sieve();
+				auto end = system_clock::now();
+				auto total = end - start;
+				AtkinResults << duration_cast<milliseconds>(total).count() << ", " << duration_cast<nanoseconds>(total).count() << endl;
+			}
+
+		}
+		
 	};
 }

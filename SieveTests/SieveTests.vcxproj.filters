@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Original">
+      <UniqueIdentifier>{5b05b155-6829-4431-9197-749507f95025}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads">
+      <UniqueIdentifier>{ed3111cb-3de2-4f35-aa65-3d1fff7790cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -26,14 +32,17 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AtkinTest.cpp">
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
     <ClCompile Include="EratosthenesTest.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Original</Filter>
     </ClCompile>
     <ClCompile Include="SundaramTest.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Original</Filter>
     </ClCompile>
-    <ClCompile Include="AtkinTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EratosthenesThreadsTest.cpp">
+      <Filter>Source Files\Threads</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

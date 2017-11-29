@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Eratosthenes.h"
 #include <fstream>
-
+#include <thread>
 
 // Sets up sieve requirements; bool primes list
 void Eratosthenes::Setup()
@@ -18,6 +18,7 @@ void Eratosthenes::Setup()
 // Runs the eratosthenes algorithm
 void Eratosthenes::Sieve()
 {
+
 	for (int p = 2; p*p <= limit; p++)
 	{
 		// If prime[p] is not checked/prime
@@ -31,7 +32,19 @@ void Eratosthenes::Sieve()
 			}
 		}
 	} // end run loop
+
 }
+
+// Thread task - cross out multiples of current number in alg
+void Eratosthenes::CrossOutMultiples(int p)
+{
+	// Update all multiples of given number
+	for (int i = p * 2; i <= limit; i += p)
+	{
+		primes[i] = false;
+	}
+}
+
 
 // Convert bools list into int list of prime numbers
 void Eratosthenes::GatherResults()

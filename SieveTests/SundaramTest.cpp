@@ -2,7 +2,9 @@
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Sundaram.cpp"
 #include <fstream>
+#include <chrono>
 
+using namespace std::chrono;
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace SieveTests
@@ -75,6 +77,21 @@ namespace SieveTests
 			assert.AreEqual(17, s.result[6]);
 		}
 
-
+		// Gather timing data for baseline performance
+		TEST_METHOD(SundaramBaselinePerformance)
+		{
+			Sundaram s(10000);
+			// Time Sieve method only 10 times
+			ofstream SundResults("SundBaseline.csv", ofstream::app);
+			for (int i = 0; i < 10; i++)
+			{
+				s.Setup();
+				auto start = system_clock::now();
+				s.Sieve();
+				auto end = system_clock::now();
+				auto total = end - start;
+				SundResults << duration_cast<milliseconds>(total).count() << ", ";
+			}
+		}
 	};
 }

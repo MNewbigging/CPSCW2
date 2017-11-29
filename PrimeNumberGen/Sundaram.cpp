@@ -16,7 +16,7 @@ void Sundaram::Setup()
 {
 	primes.clear();
 	// Prep prime bools list
-	for (int i = 0; i < nNew + 1; i++)
+	for (int i = 0; i < nNew; i++)
 	{
 		primes.push_back(false);
 	}
@@ -29,11 +29,22 @@ void Sundaram::Sieve()
 	// where 1 <= i <= j
 	for (int i = 1; i <= nNew; i++)
 	{
-		for (int j = i; (i + j + 2 * i*j) <= nNew; j++)
+		for (int j = i; (i + j)+(2*i*j) <= nNew; j++)
 		{
-			primes[i + j + 2 * i * j] = true;
+				primes[(i + j) + (2*i*j)] = true;
 		}
 	}
+
+	//int n = limit / 2;
+
+	//for (int i = 1; i < n; i++)
+	//{
+	//	for (int j = i; j <= (n - i)/(2 * i + 1); j++)
+	//	{
+	//		primes[i + j + 2 * i * j] = true;
+	//	}
+	//}
+
 }
 
 // Convert primes bools list to ints list, write to file

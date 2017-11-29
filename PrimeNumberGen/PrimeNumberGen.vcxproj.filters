@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Original">
+      <UniqueIdentifier>{8769380d-c587-4d1f-9005-7ce76d52ab8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Original">
+      <UniqueIdentifier>{56bf873f-0353-4a7d-9312-b1e671e4f0ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threads">
+      <UniqueIdentifier>{c1a95221-c506-4c83-89f5-3c4549e5bf81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Threads">
+      <UniqueIdentifier>{79a1e77c-753a-4ab9-ba6b-b951ffcc9ca8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,31 +36,37 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Atkin.h">
+      <Filter>Header Files\Original</Filter>
+    </ClInclude>
     <ClInclude Include="Eratosthenes.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Original</Filter>
     </ClInclude>
     <ClInclude Include="Sundaram.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Original</Filter>
     </ClInclude>
-    <ClInclude Include="Atkin.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="EratosthenesThreads.h">
+      <Filter>Header Files\Threads</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Eratosthenes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sundaram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Atkin.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
+    <ClCompile Include="Eratosthenes.cpp">
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
+    <ClCompile Include="Sundaram.cpp">
+      <Filter>Source Files\Original</Filter>
+    </ClCompile>
+    <ClCompile Include="EratosthenesThreads.cpp">
+      <Filter>Source Files\Threads</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

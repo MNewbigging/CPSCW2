@@ -22,6 +22,9 @@ public:
 	void Setup();
 	// The eratosthenes algorithm
 	void Sieve();
+	// Thread task - cross out multiples of current number in alg
+	void CrossOutMultiples(int p);
+
 	// Convert bools list into int list of prime numbers
 	// Write to file
 	void GatherResults();

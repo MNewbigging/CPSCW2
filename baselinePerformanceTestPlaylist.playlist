@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="SieveTests::SundaramTest::SundaramBaselinePerformance" /><Add Test="SieveTests::EratosthenesTestClass::EratosthenesBaselinePerformance" /><Add Test="SieveTests::AtkinTest::AtkinsBaselinePerformance" /></Playlist>

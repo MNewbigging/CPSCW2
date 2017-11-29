@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Eratosthenes.cpp"
-
 #include <fstream>
+#include <chrono>
+
+using namespace std::chrono;
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -58,8 +61,7 @@ namespace SieveTests
 			assert.IsTrue(e.primes[17]);
 			assert.IsTrue(e.primes[19]);
 		}
-
-		
+	
 		// Test the gather results method
 		TEST_METHOD(EratosthenesResultsOK)
 		{
@@ -76,5 +78,26 @@ namespace SieveTests
 			// TODO - read line, ensure primes are correct
 			// and in order
 		}
+	
+		// Gather timing data for baseline performance
+		TEST_METHOD(EratosthenesBaselinePerformance)
+		{
+			Eratosthenes e(1000000);
+			// Only want to time execution of the Sieve method
+			// Perform this test 10 times
+			ofstream EratResults("EratBaseline.csv", ofstream::app);
+			for (int i = 0; i < 10; i++)
+			{
+				e.Setup();
+				auto start = system_clock::now();
+				e.Sieve();
+				auto end = system_clock::now();
+				auto total = end - start;
+				EratResults << duration_cast<milliseconds>(total).count() << ", " << duration_cast<nanoseconds>(total).count() << endl;
+			}
+
+
+		}
+	
 	};
 }

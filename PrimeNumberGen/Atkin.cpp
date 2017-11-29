@@ -48,7 +48,7 @@ void Atkin::Sieve()
 	{
 		if (primes[s])
 		{
-			for (int i = s*s; s < limit; i += s*s)
+			for (int i = s*s; i < limit; i += s*s)
 			{
 				primes[i] = false;
 			}

@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Atkin.h" />
     <ClInclude Include="Eratosthenes.h" />
+    <ClInclude Include="EratosthenesThreads.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Sundaram.h" />
     <ClInclude Include="targetver.h" />
@@ -158,6 +159,7 @@
   <ItemGroup>
     <ClCompile Include="Atkin.cpp" />
     <ClCompile Include="Eratosthenes.cpp" />
+    <ClCompile Include="EratosthenesThreads.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
