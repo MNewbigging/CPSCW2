@@ -18,7 +18,17 @@ public:
 	// List of final prime numbers
 	vector<int> result;
 
-	// The sieve algorithm
+	// Prepare the primes bools list
+	void Setup();
+	// The eratosthenes algorithm
 	void Sieve();
+	// Convert bools list into int list of prime numbers
+	// Write to file
+	void GatherResults();
+
+
+	// The sieve algorithm in full
+	// OLD = original implementation before refactoring
+	void OLDSieve();
 
 };

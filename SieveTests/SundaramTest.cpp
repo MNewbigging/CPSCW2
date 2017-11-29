@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Sundaram.cpp"
-
+#include <fstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,43 +12,69 @@ namespace SieveTests
 	public:
 		// Ensures constructor works; all member variables are set 
 		// with passed params
-		TEST_METHOD(FunctionVariablesInitOk)
+		TEST_METHOD(SundaramClassVariablesInitOK)
 		{
 			// Call constructor, pass in test limit number
 			Sundaram s(20);
 			// Ensure that it was set correctly
 			Assert assert;
 			assert.AreEqual(20, s.limit);
-			// Run alg
-			s.Sieve();
-			// Ensure result is not empty
-			assert.AreNotEqual(0, (int)s.result.size());
+			// Ensure half limit was set correctly (-2 / 2)
+			assert.AreEqual(9, s.nNew);
 		}
 
-		TEST_METHOD(CorrectPrimesTo20)
+		// Tests setup method
+		TEST_METHOD(SundaramSetupOK)
 		{
-			// Set limit to 20 in constructor
 			Sundaram s(20);
-			// Run alg
-			s.Sieve();
-			// Create correct results to check against
-			vector<int> checkResult;
-			checkResult.push_back(2);
-			checkResult.push_back(3);
-			checkResult.push_back(5);
-			checkResult.push_back(7);
-			checkResult.push_back(11);
-			checkResult.push_back(13);
-			checkResult.push_back(17);
-			checkResult.push_back(19);
-			// Create assert to perform checks
+			s.Setup();
 			Assert assert;
-			for (int i = 0; i < checkResult.size(); i++)
+			// Ensure primes list size is setup correctly
+			assert.AreEqual(10, (int)s.primes.size());
+			// Ensure everything is false
+			for (int i = 0; i < 10; i++)
 			{
-				int actual = s.result[i];
-				int check = checkResult[i];
-				assert.AreEqual(check, actual);
+				assert.IsFalse(s.primes[i]);
 			}
 		}
+
+		// Tests Sieve method
+		TEST_METHOD(SundaramSieveOK)
+		{
+			Sundaram s(20);
+			s.Setup();
+			s.Sieve();
+
+			// First 4 should be false
+			Assert assert;
+			for (int i = 0; i < 4; i++)
+			{
+				assert.IsFalse(s.primes[i]);
+			}
+			// 5th should be true
+			assert.IsTrue(s.primes[4]);
+		}
+
+		// Tests results method
+		TEST_METHOD(SundaramResultsOK)
+		{
+			Sundaram s(20);
+			s.Setup();
+			s.Sieve();
+			s.GatherResults();
+
+			Assert assert;
+			// Make sure file is written to correctly
+			ifstream results("SundaramPrimes.txt");
+			assert.IsTrue(results.good());
+
+			// Make sure results are correct
+			assert.AreEqual(2, s.result[0]);
+			assert.AreEqual(3, s.result[1]);
+			assert.AreEqual(11, s.result[4]);
+			assert.AreEqual(17, s.result[6]);
+		}
+
+
 	};
 }

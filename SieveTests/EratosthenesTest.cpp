@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Eratosthenes.cpp"
 
+#include <fstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,43 +13,68 @@ namespace SieveTests
 	public:
 		// Ensures constructor works; all member variables are set 
 		// with passed params
-		TEST_METHOD(FunctionVariablesInitOk)
+		TEST_METHOD(EratosthenesClassVariablesInitOK)
 		{
 			// Call constructor, pass in test limit number
 			Eratosthenes e(20);
 			// Ensure that it was set correctly
 			Assert assert;
 			assert.AreEqual(20, e.limit);
-			// Run alg
-			e.Sieve();
-			// Ensure result is not empty
-			assert.AreNotEqual(0, (int)e.result.size());
+
 		}
 
-		TEST_METHOD(CorrectPrimesTo20)
+		// Tests the Setup method 
+		TEST_METHOD(EratosthenesSetupOK)
+		{
+			Eratosthenes e(20);
+			e.Setup();
+			Assert assert;
+			// Primes list should be setup to size of limit + 1
+			assert.AreEqual(21, (int)e.primes.size());
+			// Each item in list should be true initially
+			for (int i = 0; i < 21; i++)
+			{
+				assert.IsTrue(e.primes[i]);
+			}
+		}
+
+		// Test the Sieve method
+		TEST_METHOD(EratosthenesSieveOK)
 		{
 			// Set limit to 20 in constructor
 			Eratosthenes e(20);
+			// Setup
+			e.Setup();
 			// Run alg
 			e.Sieve();
-			// Create correct results to check against
-			vector<int> checkResult;
-			checkResult.push_back(2);
-			checkResult.push_back(3);
-			checkResult.push_back(5);
-			checkResult.push_back(7);
-			checkResult.push_back(11);
-			checkResult.push_back(13);
-			checkResult.push_back(17);
-			checkResult.push_back(19);
-			// Create assert to perform checks
+			// Ensure that known primes values are true
 			Assert assert;
-			for (int i = 0; i < checkResult.size(); i++)
-			{
-				int actual = e.result[i];
-				int check = checkResult[i];
-				assert.AreEqual(check, actual);
-			}
+			assert.IsTrue(e.primes[2]);
+			assert.IsTrue(e.primes[3]);
+			assert.IsTrue(e.primes[5]);
+			assert.IsTrue(e.primes[7]);
+			assert.IsTrue(e.primes[11]);
+			assert.IsTrue(e.primes[13]);
+			assert.IsTrue(e.primes[17]);
+			assert.IsTrue(e.primes[19]);
+		}
+
+		
+		// Test the gather results method
+		TEST_METHOD(EratosthenesResultsOK)
+		{
+			Eratosthenes e(20);
+			e.Setup();
+			e.Sieve();
+			e.GatherResults();
+			
+			Assert assert;
+			// Make sure file is written to correctly
+			ifstream results("EratosthenesPrimes.txt");
+			assert.IsTrue(results.good());
+			
+			// TODO - read line, ensure primes are correct
+			// and in order
 		}
 	};
 }

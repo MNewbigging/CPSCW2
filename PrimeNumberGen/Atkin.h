@@ -9,7 +9,7 @@ class Atkin
 public: 
 	// Constructor takes and sets test limit
 	Atkin(int n);
-	~Atkin();
+	~Atkin() {}
 
 	// Hold test limit
 	int limit;
@@ -18,7 +18,16 @@ public:
 	// List of final prime numbers
 	vector<int> result;
 
-	// The alg
+	// Prepare bools list for alg
+	void Setup();
+	// Atkin sieve alg
 	void Sieve();
+	// Convert bool list to int results list, write to file
+	void GatherResults();
+
+
+
+	// The alg
+	void OLDSieve();
 };
 

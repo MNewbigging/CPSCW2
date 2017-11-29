@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\PrimeNumberGen\Atkin.cpp"
-
+#include <fstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -12,43 +12,64 @@ namespace SieveTests
 	public:
 		// Ensures constructor works; all member variables are set 
 		// with passed params
-		TEST_METHOD(FunctionVariablesInitOk)
+		TEST_METHOD(AtkinClassVariablesInitOK)
 		{
 			// Call constructor, pass in test limit number
 			Atkin a(20);
 			// Ensure that it was set correctly
 			Assert assert;
 			assert.AreEqual(20, a.limit);
-			// Run alg
-			a.Sieve();
-			// Ensure result is not empty
-			assert.AreNotEqual(0, (int)a.result.size());
 		}
 
-		TEST_METHOD(CorrectPrimesTo20)
+		// Tests setup method
+		TEST_METHOD(AtkinSetupOK)
 		{
 			// Set limit to 20 in constructor
 			Atkin a(20);
-			// Run alg
-			a.Sieve();
-			// Create correct results to check against
-			vector<int> checkResult;
-			checkResult.push_back(2);
-			checkResult.push_back(3);
-			checkResult.push_back(5);
-			checkResult.push_back(7);
-			checkResult.push_back(11);
-			checkResult.push_back(13);
-			checkResult.push_back(17);
-			checkResult.push_back(19);
-			// Create assert to perform checks
+			// Setup
+			a.Setup();
 			Assert assert;
-			for (int i = 0; i < checkResult.size(); i++)
+			// Ensure primes list size is setup correctly
+			assert.AreEqual(20, (int)a.primes.size());
+			for (int i = 0; i < 20; i++)
 			{
-				int actual = a.result[i];
-				int check = checkResult[i];
-				assert.AreEqual(check, actual);
+				assert.IsFalse(a.primes[i]);
 			}
+		}
+
+		// Tests Sieve method
+		TEST_METHOD(AtkinSieveOK)
+		{
+			Atkin a(20);
+			a.Setup();
+			a.Sieve();
+
+			Assert assert;
+			// 5th should be true (assumes 2 and 3)
+			assert.IsTrue(a.primes[5]);
+			assert.IsTrue(a.primes[7]);
+			assert.IsTrue(a.primes[11]);
+			assert.IsTrue(a.primes[13]);
+		}
+
+		// Tests results method
+		TEST_METHOD(AtkinsResultsOK)
+		{
+			Atkin a(20);
+			a.Setup();
+			a.Sieve();
+			a.GatherResults();
+
+			Assert assert;
+			// Ensure output file is created
+			ifstream results("AtkinPrimes.txt");
+			assert.IsTrue(results.good());
+
+			// Make sure results are correct
+			assert.AreEqual(2, a.result[0]);
+			assert.AreEqual(3, a.result[1]);
+			assert.AreEqual(11, a.result[4]);
+			assert.AreEqual(17, a.result[6]);
 		}
 	};
 }
