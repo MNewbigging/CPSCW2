@@ -22,7 +22,10 @@ namespace SieveTests
 			Assert assert;
 			assert.AreEqual(20, s.limit);
 			// Ensure half limit was set correctly (-2 / 2)
-			assert.AreEqual(9, s.nNew);
+			assert.AreEqual(10, s.nNew);
+			// Setup and ensure primes list is correct size
+			s.Setup();
+			assert.AreEqual(11, (int)s.primes.size());
 		}
 
 		// Tests setup method
@@ -32,11 +35,11 @@ namespace SieveTests
 			s.Setup();
 			Assert assert;
 			// Ensure primes list size is setup correctly
-			assert.AreEqual(10, (int)s.primes.size());
+			assert.AreEqual(11, (int)s.primes.size());
 			// Ensure everything is false
 			for (int i = 0; i < 10; i++)
 			{
-				assert.IsFalse(s.primes[i]);
+				assert.IsTrue(s.primes[i]);
 			}
 		}
 
@@ -51,10 +54,10 @@ namespace SieveTests
 			Assert assert;
 			for (int i = 0; i < 4; i++)
 			{
-				assert.IsFalse(s.primes[i]);
+				assert.IsTrue(s.primes[i]);
 			}
 			// 5th should be true
-			assert.IsTrue(s.primes[4]);
+			assert.IsFalse(s.primes[4]);
 		}
 
 		// Tests results method
@@ -77,21 +80,7 @@ namespace SieveTests
 			assert.AreEqual(17, s.result[6]);
 		}
 
-		// Gather timing data for baseline performance
-		TEST_METHOD(SundaramBaselinePerformance)
-		{
-			Sundaram s(10000);
-			// Time Sieve method only 10 times
-			ofstream SundResults("SundBaseline.csv", ofstream::app);
-			for (int i = 0; i < 10; i++)
-			{
-				s.Setup();
-				auto start = system_clock::now();
-				s.Sieve();
-				auto end = system_clock::now();
-				auto total = end - start;
-				SundResults << duration_cast<milliseconds>(total).count() << ", ";
-			}
-		}
+	
+
 	};
 }

@@ -12,46 +12,64 @@ using namespace std::chrono;
 // Used to run algorithm methods and debug with print statements
 int main()
 {
-	// Limit
-	int n = 1000000;
+	// Four limits being used in each alg test
+	int n1 = 500000;
+	int n2 = 1000000;
+	int n3 = 500000000;
+	int n4 = 1000000000;
+	
 
-	//Eratosthenes e(n);
-	//e.Setup();
-	//auto start = system_clock::now();
-	//e.Sieve();
-	//auto end = system_clock::now();
-	//auto total = end - start;
-	//cout << "Time " << duration_cast<milliseconds>(total).count() << endl;
-
-	EratosthenesThreads e(n);
-	e.Setup();
-	auto start = system_clock::now();
-	e.Sieve();
-	auto end = system_clock::now();
-	auto total = end - start;
-	cout << "Time " << duration_cast<milliseconds>(total).count() << endl;
-	e.GatherResults();
+	/* Testing Eratosthenes original implementation
+	//ofstream results("EratBaseline.csv", ofstream::app);
+	//Eratosthenes e(n1);
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	e.Setup();
+	//	auto start = system_clock::now();
+	//	e.Sieve();
+	//	auto end = system_clock::now();
+	//	auto total = end - start;
+	//	results << duration_cast<nanoseconds>(total).count() << ", ";
+	//}
+	//results << endl;
+	*/
 
 
-	// Create sundaram sieve
-	//cout << "Sund started" << endl;
-	//Sundaram sund(n);
-	//sund.Setup();
-	//sund.Sieve();
-	////sund.GatherResults();
-	//cout << "Sund done" << endl;
-	//for (auto &i : sund.result)
-	//	cout << i << endl;
+	/* Testing Sundaram original implementation
+	//ofstream results("SundBasline.csv", ofstream::app);
+	//Sundaram s(n3);
+	//results << endl;
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	s.Setup();
+	//	auto start = system_clock::now();
+	//	s.Sieve();
+	//	auto end = system_clock::now();
+	//	auto total = end - start;
+	//	results << duration_cast<milliseconds>(total).count() << ", ";
+	//}
+	*/
 
-	// Create atkin sieve
-	//cout << "Atkin started" << endl;
-	//Atkin a(n);
-	//a.Setup();
-	//a.Sieve();
-	//a.GatherResults();
-	//cout << "Atkin done" << endl;
+
+	/* Testing Atkin original implementation
+	//ofstream results("AtkinBasleine.csv", ofstream::app);
+	//results << endl;
+	//Atkin a(n2);
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	a.Setup();
+	//	auto start = system_clock::now();
+	//	a.Sieve();
+	//	auto end = system_clock::now();
+	//	auto total = end - start;
+	//	results << duration_cast<milliseconds>(total).count() << ", ";	
+	//}
+	*/
+
+
 
 	// Keep window open
+	cout << "Finished work" << endl;
 	getchar();
 	return 0;
 }

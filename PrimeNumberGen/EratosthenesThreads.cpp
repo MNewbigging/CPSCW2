@@ -19,7 +19,7 @@ void EratosthenesThreads::Setup()
 	}
 }
 
-// Runs the eratosthenes algorithm
+// First threaded approach
 void EratosthenesThreads::Sieve()
 {
 
@@ -78,6 +78,7 @@ void EratosthenesThreads::Sieve()
 
 }
 
+
 // Thread task - cross out multiples of current number in alg
 void EratosthenesThreads::ThreadSieve(int start, int end)
 {
@@ -98,7 +99,39 @@ void EratosthenesThreads::ThreadSieve(int start, int end)
 }
 
 
+// Second threaded approach
+void EratosthenesThreads::Sieve2()
+{
+	for (int p = 2; p*p <= limit; p+=4)
+	{
+		//// If prime[p] is not checked/prime
+		//if (primes[p])
+		//{
 
+		vector<thread> threads;
+
+		threads.push_back(thread(&EratosthenesThreads::ThreadCrossOutMultiples, this, p));
+		threads.push_back(thread(&EratosthenesThreads::ThreadCrossOutMultiples, this, p + 1));
+		threads.push_back(thread(&EratosthenesThreads::ThreadCrossOutMultiples, this, p + 2));
+		threads.push_back(thread(&EratosthenesThreads::ThreadCrossOutMultiples, this, p + 3));
+
+		for (auto &t : threads)
+			t.join();
+
+		//}
+	} // end run loop
+}
+
+// Second threaded approach - thread task
+void EratosthenesThreads::ThreadCrossOutMultiples(int p)
+{
+	// Update all multiples of p
+	for (int i = p * 2; i <= limit; i += p)
+	{
+		// This is not a prime
+		primes[i] = false;
+	}
+}
 
 
 // Convert bools list into int list of prime numbers

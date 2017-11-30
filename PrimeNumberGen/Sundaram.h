@@ -26,7 +26,6 @@ public:
 	// Convert primes bools list to ints list, write to file
 	void GatherResults();
 
-
 	// The sieve algorithm
 	void OLDSieve();
 };

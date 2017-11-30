@@ -8,7 +8,7 @@ class Eratosthenes
 {
 public:
 	// Constructor takes in size of test, sets to internal member var
-	Eratosthenes(int n) { limit = n; }
+	Eratosthenes(int n);
 	~Eratosthenes() {}
 	
 	// Hold test limit number
@@ -22,9 +22,6 @@ public:
 	void Setup();
 	// The eratosthenes algorithm
 	void Sieve();
-	// Thread task - cross out multiples of current number in alg
-	void CrossOutMultiples(int p);
-
 	// Convert bools list into int list of prime numbers
 	// Write to file
 	void GatherResults();

@@ -19,10 +19,10 @@ namespace SieveTests
 		TEST_METHOD(EratosthenesClassVariablesInitOK)
 		{
 			// Call constructor, pass in test limit number
-			Eratosthenes e(20);
+			Eratosthenes e(500000000);
 			// Ensure that it was set correctly
 			Assert assert;
-			assert.AreEqual(20, e.limit);
+			assert.AreEqual(500000000, e.limit);
 
 		}
 
@@ -79,25 +79,7 @@ namespace SieveTests
 			// and in order
 		}
 	
-		// Gather timing data for baseline performance
-		TEST_METHOD(EratosthenesBaselinePerformance)
-		{
-			Eratosthenes e(1000000);
-			// Only want to time execution of the Sieve method
-			// Perform this test 10 times
-			ofstream EratResults("EratBaseline.csv", ofstream::app);
-			for (int i = 0; i < 10; i++)
-			{
-				e.Setup();
-				auto start = system_clock::now();
-				e.Sieve();
-				auto end = system_clock::now();
-				auto total = end - start;
-				EratResults << duration_cast<milliseconds>(total).count() << ", " << duration_cast<nanoseconds>(total).count() << endl;
-			}
-
-
-		}
+	
 	
 	};
 }

@@ -30,9 +30,13 @@ public:
 	void Setup();
 	// The eratosthenes algorithm
 	void Sieve();
+
 	// Thread task - cross out multiples of current number in alg
 	void ThreadSieve(int start, int end);
-
+	// Thread approach 2
+	void Sieve2();
+	// thread task 2
+	void ThreadCrossOutMultiples(int p);
 	// Convert bools list into int list of prime numbers
 	// Write to file
 	void GatherResults();
