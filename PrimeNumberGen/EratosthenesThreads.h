@@ -37,6 +37,12 @@ public:
 	void Sieve2();
 	// thread task 2
 	void ThreadCrossOutMultiples(int p);
+
+	void Sieve3();
+
+	void ThreadMultiples(int num, int start, int end);
+
+
 	// Convert bools list into int list of prime numbers
 	// Write to file
 	void GatherResults();

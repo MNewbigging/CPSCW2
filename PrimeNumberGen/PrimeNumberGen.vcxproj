@@ -152,15 +152,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Atkin.h" />
+    <ClInclude Include="AtkinOpenMP.h" />
     <ClInclude Include="Eratosthenes.h" />
+    <ClInclude Include="EratosthenesOpenMP.h" />
     <ClInclude Include="EratosthenesThreads.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Sundaram.h" />
+    <ClInclude Include="SundaramOpenMP.h" />
+    <ClInclude Include="SundaramThreads.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Atkin.cpp" />
+    <ClCompile Include="AtkinOpenMP.cpp" />
     <ClCompile Include="Eratosthenes.cpp" />
+    <ClCompile Include="EratosthenesOpenMP.cpp" />
     <ClCompile Include="EratosthenesThreads.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -170,6 +176,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Sundaram.cpp" />
+    <ClCompile Include="SundaramOpenMP.cpp" />
+    <ClCompile Include="SundaramThreads.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

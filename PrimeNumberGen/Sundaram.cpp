@@ -15,14 +15,9 @@ Sundaram::Sundaram(int n)
 // Prepare bools list for alg
 void Sundaram::Setup()
 {
+	// Clear from any previous run
 	primes.clear();
-	// Prep prime bools list
-	//primes.reserve(nNew + 1);
-	//for (int i = 0; i < nNew + 1; i++)
-	//{
-	//	primes.push_back(false);
-	//}
-
+	// Initiate list to correct size and values
 	primes = vector<bool>(nNew + 1, true);
 }
 

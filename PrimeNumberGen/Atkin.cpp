@@ -11,14 +11,10 @@ Atkin::Atkin(int n)
 // Prepare bools list for alg
 void Atkin::Setup()
 {
+	// Clear from any previous run
 	primes.clear();
-	// Prep bool list
-	//for (int i = 0; i < limit; i++)
-	//{
-	//	primes.push_back(false);
-	//}
+	// Initiate list to correct size and values
 	primes = vector<bool>(limit + 1, false);
-
 }
 
 // The sieve of atkin algorithm

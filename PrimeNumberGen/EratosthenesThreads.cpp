@@ -8,7 +8,7 @@ void EratosthenesThreads::Setup()
 {
 	// Prep primes bool list
 	primes.clear();
-	primes = vector<bool>(limit, true);
+	primes = vector<bool>(limit + 1, true);
 	// Reset global vars
 	totalIterations = threadCount = workChunk = 0;
 }
@@ -98,8 +98,8 @@ void EratosthenesThreads::Sieve2()
 	for (int p = 2; p*p <= limit; p+=4)
 	{
 		//// If prime[p] is not checked/prime
-		//if (primes[p])
-		//{
+		if (primes[p])
+		{
 
 		vector<thread> threads;
 
@@ -111,7 +111,7 @@ void EratosthenesThreads::Sieve2()
 		for (auto &t : threads)
 			t.join();
 
-		//}
+		}
 	} // end run loop
 }
 
@@ -125,6 +125,73 @@ void EratosthenesThreads::ThreadCrossOutMultiples(int p)
 		primes[i] = false;
 	}
 }
+
+
+// Third threads approach
+void EratosthenesThreads::Sieve3()
+{
+	//threadCount = thread::hardware_concurrency();
+	threadCount = 2;
+
+	for (int p = 2; p*p <= limit; p++)
+	{
+		
+		//// If prime[p] is not checked/prime
+		if (primes[p])
+		{
+
+			// Divide limit by p to find number of multiples to split amongst threads
+			int numberOfMultiples = floor(limit / p) - 1;
+			workChunk = numberOfMultiples / threadCount;
+			int start = p * 2;
+			int end = p * 2;
+			// For each thread...
+			vector<thread> threads;
+			for (int i = 0; i < threadCount; i++)
+			{
+				// Assign it's work load
+				// End index increments by start index * workChunk
+				end += workChunk * p;
+				if (end > limit)
+					end = limit;
+				// thread
+				threads.push_back(thread(&EratosthenesThreads::ThreadMultiples, this, p, start, end));
+				// Update start point for next thread
+				start = end;
+			}
+
+			for (auto &t : threads)
+				t.join();
+
+			//// Update all multiples of p
+			//for (int i = p * 2; i <= limit; i += p)
+			//{
+
+			//}
+
+		}
+	} // end run loop
+}
+
+
+void EratosthenesThreads::ThreadMultiples(int num, int start, int end)
+{
+
+	for (int i = start; i <= end; i += num)
+	{
+		// This is not a prime
+		primes[i] = false;
+	}
+}
+
+
+
+
+
+
+
+
+
 
 
 // Convert bools list into int list of prime numbers

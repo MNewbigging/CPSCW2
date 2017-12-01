@@ -4,7 +4,7 @@
 #include <thread>
 #include <iostream>
 
-// Constuctor
+// Constuctor sets given test limit value
 Eratosthenes::Eratosthenes(int n)
 {
 	limit = n;
@@ -43,22 +43,19 @@ void Eratosthenes::Sieve()
 }
 
 
-// Convert bools list into int list of prime numbers
+// Convert bools list into int list of prime numbers and write to file
 void Eratosthenes::GatherResults()
 {
 	// Open file for writing
 	ofstream primeFile("EratosthenesPrimes.txt", ofstream::out);
-	// Turn bools list into prime numbers result list
-	// (2n)
 	for (int p = 2; p <= limit; p++)
 	{
 		if (primes[p])
 		{
 			primeFile << p << ", ";
-			
-			result.push_back(p);
 		}
 	}
+
 }
 
 // Perform prime number gen algorithm
