@@ -8,18 +8,12 @@ void EratosthenesThreads::Setup()
 {
 	// Prep primes bool list
 	primes.clear();
+	primes = vector<bool>(limit, true);
 	// Reset global vars
 	totalIterations = threadCount = workChunk = 0;
-	
-	 
-	// (1n) 
-	for (int i = 0; i < limit + 1; i++)
-	{
-		primes.push_back(true);
-	}
 }
 
-// First threaded approach
+// First threaded approach - gives 4 additional incorrect prime numbers :(
 void EratosthenesThreads::Sieve()
 {
 
@@ -77,7 +71,6 @@ void EratosthenesThreads::Sieve()
 		t.join();
 
 }
-
 
 // Thread task - cross out multiples of current number in alg
 void EratosthenesThreads::ThreadSieve(int start, int end)

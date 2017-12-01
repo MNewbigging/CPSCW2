@@ -13,11 +13,17 @@ using namespace std::chrono;
 int main()
 {
 	// Four limits being used in each alg test
-	int n1 = 500000;
-	int n2 = 1000000;
-	int n3 = 500000000;
-	int n4 = 1000000000;
+	int n1 = 500000; // half mil
+	int n2 = 1000000; // million
+	int n3 = 500000000; // half bil
+	int n4 = 1000000000; // billion
 	
+	Atkin a(n1);
+	a.Setup();
+	a.Sieve();
+	a.GatherResults();
+
+
 
 	/* Testing Eratosthenes original implementation
 	//ofstream results("EratBaseline.csv", ofstream::app);
@@ -66,7 +72,7 @@ int main()
 	//}
 	*/
 
-
+	
 
 	// Keep window open
 	cout << "Finished work" << endl;

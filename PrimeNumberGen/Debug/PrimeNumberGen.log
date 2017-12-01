@@ -1,4 +1,4 @@
-﻿  Eratosthenes.cpp
+﻿  Atkin.cpp
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/PROFILE' specification
 Atkin.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:REF' specification
   PrimeNumberGen.vcxproj -> C:\Users\mrnew\Documents\GitHub\CPSCW2\Debug\PrimeNumberGen.exe

@@ -13,18 +13,20 @@ void Atkin::Setup()
 {
 	primes.clear();
 	// Prep bool list
-	for (int i = 0; i < limit; i++)
-	{
-		primes.push_back(false);
-	}
+	//for (int i = 0; i < limit; i++)
+	//{
+	//	primes.push_back(false);
+	//}
+	primes = vector<bool>(limit + 1, false);
+
 }
 
 // The sieve of atkin algorithm
 void Atkin::Sieve()
 {
-	for (int x = 1; x*x < limit; x++)
+	for (int x = 1; x*x <= limit; x++)
 	{
-		for (int y = 1; y*y < limit; y++)
+		for (int y = 1; y*y <= limit; y++)
 		{
 			// This number being considered
 			int n = (4 * x * x) + (y * y);
@@ -36,19 +38,23 @@ void Atkin::Sieve()
 			if (n <= limit && n % 12 == 7)
 				primes[n] = true;
 
-			n = (3 * x * x) - (y * y);
-			if (x > y && n <= limit && n % 12 == 11)
-				primes[n] = true;
+			if (x > y)
+			{
+				n = (3 * x * x) - (y * y);
+				if (x > y && n <= limit && n % 12 == 11)
+					primes[n] = true;
+			}
+
 
 		} // end for y
 	} // end for x
 
-	  // Mark all multiples of squares as non-prime
-	for (int s = 5; s*s < limit; s++)
+	// Mark all multiples of squares as non-prime
+	for (int s = 5; s*s <= limit; s++)
 	{
 		if (primes[s])
 		{
-			for (int i = s*s; i < limit; i += s*s)
+			for (int i = s*s; i < limit; i += s)
 			{
 				primes[i] = false;
 			}
