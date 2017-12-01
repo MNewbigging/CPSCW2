@@ -39,12 +39,12 @@ void Sundaram::GatherResults()
 	ofstream primeFile("SundaramPrimes.txt", ofstream::out);
 	// Convert bools to ints. 2 is assumed
 	result.push_back(2);
-	primeFile << 2 << ", ";
+	primeFile << 2 << endl;
 	for (int i = 1; i <= nNew; i++)
 	{
 		if (primes[i])
 		{
-			primeFile << 2 * i + 1 << ", ";
+			primeFile << 2 * i + 1 << endl;
 			result.push_back(2 * i + 1);
 		}
 	}

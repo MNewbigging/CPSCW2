@@ -52,7 +52,7 @@ void Eratosthenes::GatherResults()
 	{
 		if (primes[p])
 		{
-			primeFile << p << ", ";
+			primeFile << p << endl;
 		}
 	}
 

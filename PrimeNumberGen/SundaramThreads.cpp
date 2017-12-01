@@ -54,12 +54,12 @@ void SundaramThreads::GatherResults()
 {
 	ofstream primeFile("SundaramThreadsPrimes.txt", ofstream::out);
 	// Convert bools to ints. 2 is assumed
-	primeFile << 2 << ", ";
+	primeFile << 2 << endl;
 	for (int i = 1; i <= nNew; i++)
 	{
 		if (primes[i])
 		{
-			primeFile << 2 * i + 1 << ", ";
+			primeFile << 2 * i + 1 << endl;
 		}
 	}
 }

@@ -66,6 +66,9 @@
     <ClInclude Include="SundaramThreads.h">
       <Filter>Header Files\Threads</Filter>
     </ClInclude>
+    <ClInclude Include="AtkinThreads.h">
+      <Filter>Header Files\Threads</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files\OpenMP</Filter>
     </ClCompile>
     <ClCompile Include="SundaramThreads.cpp">
+      <Filter>Source Files\Threads</Filter>
+    </ClCompile>
+    <ClCompile Include="AtkinThreads.cpp">
       <Filter>Source Files\Threads</Filter>
     </ClCompile>
   </ItemGroup>

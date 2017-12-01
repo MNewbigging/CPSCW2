@@ -66,8 +66,8 @@ void Atkin::GatherResults()
 
 	// 2 and 3 are known to be prime, and omitted from test
 	result.push_back(2), result.push_back(3);
-	primeFile << 2 << ", ";
-	primeFile << 3 << ", ";
+	primeFile << 2 << endl;
+	primeFile << 3 << endl;
 
 	// Convert from bools to ints 
 	for (int i = 5; i < limit; i++)
@@ -75,7 +75,7 @@ void Atkin::GatherResults()
 		if (primes[i])
 		{
 			result.push_back(i);
-			primeFile << i << ", ";
+			primeFile << i << endl;
 		}
 			
 	}

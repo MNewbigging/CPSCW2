@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Atkin.h" />
     <ClInclude Include="AtkinOpenMP.h" />
+    <ClInclude Include="AtkinThreads.h" />
     <ClInclude Include="Eratosthenes.h" />
     <ClInclude Include="EratosthenesOpenMP.h" />
     <ClInclude Include="EratosthenesThreads.h" />
@@ -165,6 +166,7 @@
   <ItemGroup>
     <ClCompile Include="Atkin.cpp" />
     <ClCompile Include="AtkinOpenMP.cpp" />
+    <ClCompile Include="AtkinThreads.cpp" />
     <ClCompile Include="Eratosthenes.cpp" />
     <ClCompile Include="EratosthenesOpenMP.cpp" />
     <ClCompile Include="EratosthenesThreads.cpp" />

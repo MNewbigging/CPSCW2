@@ -185,15 +185,6 @@ void EratosthenesThreads::ThreadMultiples(int num, int start, int end)
 }
 
 
-
-
-
-
-
-
-
-
-
 // Convert bools list into int list of prime numbers
 void EratosthenesThreads::GatherResults()
 {
@@ -205,7 +196,7 @@ void EratosthenesThreads::GatherResults()
 	{
 		if (primes[p])
 		{
-			primeFile << p << ", ";
+			primeFile << p << endl;
 
 			result.push_back(p);
 		}

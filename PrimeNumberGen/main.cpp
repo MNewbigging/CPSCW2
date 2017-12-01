@@ -1,15 +1,19 @@
 #include "stdafx.h"
 #include <iostream>
 #include <fstream>
+#include <chrono>
+
 #include "Eratosthenes.h"
 #include "Sundaram.h"
 #include "Atkin.h"
 #include "EratosthenesThreads.h"
 #include "SundaramThreads.h"
+#include "AtkinThreads.h"
 #include "EratosthenesOpenMP.h"
-#include "AtkinOpenMP.h"
 #include "SundaramOpenMP.h"
-#include <chrono>
+#include "AtkinOpenMP.h"
+
+
 
 //#include <string>
 
@@ -25,23 +29,20 @@ int main()
 	int n4 = 1000000000; // billion
 
 
-	Eratosthenes e(n1);
-	e.Setup();
-	e.Sieve();
-	e.GatherResults();
+	//EratosthenesThreads e(n1);
+	//e.Setup();
+	//e.Sieve3();
+	//e.GatherResults();
 
-	Sundaram s(n1);
-	s.Setup();
-	s.Sieve();
-	s.GatherResults();
+	//SundaramThreads s(n1);
+	//s.Setup();
+	//s.Sieve();
+	//s.GatherResults();
 
-	Atkin a(n1);
+	AtkinThreads a(n1);
 	a.Setup();
 	a.Sieve();
 	a.GatherResults();
-
-
-
 
 
 
