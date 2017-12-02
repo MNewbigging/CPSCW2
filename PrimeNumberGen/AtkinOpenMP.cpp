@@ -16,17 +16,17 @@ void AtkinOpenMP::Setup()
 	// Clear from any previous run
 	primes.clear();
 	// Initiate list to correct size and values
-	primes = vector<bool>(limit + 1, true);
+	primes = vector<bool>(limit + 1, false);
 }
 
 // Sieve of Atkin algorithm optimized with openMP
 void AtkinOpenMP::Sieve()
 {
 	int rootLimit = ceil(sqrt(limit));
-	auto threadCount = thread::hardware_concurrency();
-	auto workChunk = limit / rootLimit;
 
-#pragma omp parallel for schedule(static, workChunk) num_threads(threadCount)
+	auto threadCount = thread::hardware_concurrency();
+
+#pragma omp parallel for num_threads(threadCount)
 	for (int x = 1; x <= rootLimit; x++)
 	{
 		for (int y = 1; y <= rootLimit; y++)
@@ -73,17 +73,17 @@ void AtkinOpenMP::GatherResults()
 	ofstream primeFile("AtkinOMPPrimes.txt", ofstream::out);
 
 	// 2 and 3 are known to be prime, and omitted from test
-	result.push_back(2), result.push_back(3);
-	primeFile << 2 << ", ";
-	primeFile << 3 << ", ";
+	//result.push_back(2), result.push_back(3);
+	primeFile << 2 << endl;
+	primeFile << 3 << endl;
 
 	// Convert from bools to ints 
 	for (int i = 5; i < limit; i++)
 	{
 		if (primes[i])
 		{
-			result.push_back(i);
-			primeFile << i << ", ";
+			//result.push_back(i);
+			primeFile << i << endl;
 		}
 	}
 }

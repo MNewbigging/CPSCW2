@@ -134,23 +134,25 @@ void EratosthenesThreads::Sieve3()
 	threadCount = 2;
 
 	for (int p = 2; p*p <= limit; p++)
-	{
-		
-		//// If prime[p] is not checked/prime
+	{		
+		// If prime[p] is not checked/prime
 		if (primes[p])
 		{
 
 			// Divide limit by p to find number of multiples to split amongst threads
-			int numberOfMultiples = floor(limit / p) - 1;
-			workChunk = numberOfMultiples / threadCount;
+			int numberOfMultiples = floor(limit / p) - 1; // -1 because we don't remove p itself
+			// Amount of multiples each thread should work on
+			workChunk = numberOfMultiples / threadCount; 
+			// Track and update start and end indices
 			int start = p * 2;
 			int end = p * 2;
-			// For each thread...
+			// Hold threads
 			vector<thread> threads;
+			// For each thread...
 			for (int i = 0; i < threadCount; i++)
 			{
 				// Assign it's work load
-				// End index increments by start index * workChunk
+				// Determine end point
 				end += workChunk * p;
 				if (end > limit)
 					end = limit;
@@ -160,20 +162,15 @@ void EratosthenesThreads::Sieve3()
 				start = end;
 			}
 
+			// Execute thread tasks
 			for (auto &t : threads)
 				t.join();
-
-			//// Update all multiples of p
-			//for (int i = p * 2; i <= limit; i += p)
-			//{
-
-			//}
 
 		}
 	} // end run loop
 }
 
-
+// Thread task
 void EratosthenesThreads::ThreadMultiples(int num, int start, int end)
 {
 

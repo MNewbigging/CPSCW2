@@ -20,8 +20,7 @@ void AtkinThreads::Setup()
 
 void AtkinThreads::Sieve()
 {
-	//int threadCount = thread::hardware_concurrency();
-	int threadCount = 2;
+	int threadCount = thread::hardware_concurrency();
 	int rootLimit = ceil(sqrt(limit));
 	int workChunk = rootLimit / threadCount;
 	int start = 1;
@@ -29,11 +28,11 @@ void AtkinThreads::Sieve()
 	vector<thread> threads;
 	for (int i = 0; i < threadCount; i++)
 	{
-		end += workChunk;
+		end = start + workChunk;
 		if (end > limit)
 			end = limit;
 		threads.push_back(thread(&AtkinThreads::ThreadSieve, this, start, end));
-		start = end;
+		start = end + 1;
 	}
 
 	for (auto &t : threads)

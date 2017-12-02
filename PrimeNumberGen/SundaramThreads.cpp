@@ -20,7 +20,7 @@ void SundaramThreads::Setup()
 
 void SundaramThreads::Sieve()
 {
-	int threadCount = 2;
+	int threadCount = thread::hardware_concurrency();
 	int workChunk = nNew / threadCount;
 	int start = 1;
 	int end = start;

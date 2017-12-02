@@ -31,7 +31,7 @@ void EratosthenesOpenMP::Sieve()
 		if (primes[p])
 		{
 // Crossing out multiples can be made parallel
-#pragma omp parallel for schedule(dynamic) num_threads(threadCount)
+#pragma omp parallel for num_threads(threadCount)
 			// Update all multiples of p
 			for (int i = p * 2; i <= limit; i += p)
 			{
@@ -54,8 +54,8 @@ void EratosthenesOpenMP::GatherResults()
 	{
 		if (primes[p])
 		{
-			primeFile << p << ", ";
-			result.push_back(p);
+			primeFile << p << endl;
+			//result.push_back(p);
 		}
 	}
 }

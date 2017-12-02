@@ -42,14 +42,14 @@ void SundaramOpenMP::GatherResults()
 {
 	ofstream primeFile("SundaramOMPPrimes.txt", ofstream::out);
 	// Convert bools to ints. 2 is assumed
-	result.push_back(2);
-	primeFile << 2 << ", ";
+	//result.push_back(2);
+	primeFile << 2 << endl;
 	for (int i = 1; i <= nNew; i++)
 	{
 		if (primes[i])
 		{
-			primeFile << 2 * i + 1 << ", ";
-			result.push_back(2 * i + 1);
+			primeFile << 2 * i + 1 << endl;
+			//result.push_back(2 * i + 1);
 		}
 	}
 }
