@@ -29,23 +29,27 @@ int main()
 	int n4 = 1000000000; // billion
 
 
-	//EratosthenesThreads e(n1);
-	//e.Setup();
-	//e.Sieve3();
-	//e.GatherResults();
-
-	//SundaramThreads s(n1);
-	//s.Setup();
-	//s.Sieve();
-	//s.GatherResults();
-
-	AtkinThreads a(n1);
+	Atkin a(n4);
 	a.Setup();
 	a.Sieve();
 	a.GatherResults();
 
 
+	//ofstream results("EratosthenesThreads.csv", ofstream::app);
+	//EratosthenesThreads e(n4);
+	//for (int i = 0; i < 1; i++)
+	//{
+	//	e.Setup();
+	//	auto start = system_clock::now();
+	//	e.Sieve3();
+	//	auto end = system_clock::now();
+	//	auto total = end - start;
+	//	results << duration_cast<milliseconds>(total).count() << ", ";
+	//}
+	//results << endl;
 
+
+	
 
 
 
