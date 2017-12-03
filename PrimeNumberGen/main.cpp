@@ -29,7 +29,7 @@ int main()
 	int n3 = 500000000; // half bil
 	int n4 = 1000000000; // billion
 
-	
+	// REMEMBER - USE SIEVE 3 for Eratosthenes Threads!!!
 
 	
 
