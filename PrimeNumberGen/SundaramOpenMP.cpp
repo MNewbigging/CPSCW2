@@ -27,7 +27,8 @@ void SundaramOpenMP::Sieve()
 	int threadCount = thread::hardware_concurrency();
 
 	// Optimize using openMP
-#pragma omp parallel for schedule(static) num_threads(threadCount)
+#pragma omp parallel for num_threads(threadCount)
+	// This is same logic found in Sundaram.cpp sieve() function
 	for (int i = 1; i < nNew; ++i)
 	{
 		for (int j = i; j <= (nNew - i) / (2 * i + 1); ++j)
@@ -40,16 +41,18 @@ void SundaramOpenMP::Sieve()
 // Convert bools list into int list of prime numbers and write to file
 void SundaramOpenMP::GatherResults()
 {
+	// Open file for writing
 	ofstream primeFile("SundaramOMPPrimes.txt", ofstream::out);
-	// Convert bools to ints. 2 is assumed
-	//result.push_back(2);
+	// 2 is assumed
 	primeFile << 2 << endl;
+	// Go through numbers 1 til half limit
 	for (int i = 1; i <= nNew; i++)
 	{
+		// If marked as prime
 		if (primes[i])
 		{
+			// Write prime number (2*currentNumber+1) to file
 			primeFile << 2 * i + 1 << endl;
-			//result.push_back(2 * i + 1);
 		}
 	}
 }

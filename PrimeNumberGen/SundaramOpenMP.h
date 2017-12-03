@@ -7,6 +7,7 @@ using namespace std;
 class SundaramOpenMP
 {
 public:
+	// Constructor takes in test limit, assigns to limit members var and halves for nNew var
 	SundaramOpenMP(int n);
 	~SundaramOpenMP() {}
 
@@ -19,7 +20,7 @@ public:
 
 	// Prepare the primes bools list
 	void Setup();
-	// The sundaram sieve algorithm
+	// The sundaram sieve algorithm with openMP optimization
 	void Sieve();
 	// Convert bools list into int list of prime numbers
 	// Write to file

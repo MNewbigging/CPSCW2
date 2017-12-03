@@ -13,20 +13,17 @@ Eratosthenes::Eratosthenes(int n)
 // Sets up sieve requirements; bool primes list
 void Eratosthenes::Setup()
 {
-	// Prep primes bool list
+	// Clear from any previous runs
 	primes.clear();
+	// Initiate list to correct size and values
 	primes = vector<bool>(limit + 1, true);
-	// (1n) 
-	//for (int i = 0; i < limit + 1; i++)
-	//{
-	//	primes.push_back(true);
-	//}
-
 }
 
 // Runs the eratosthenes algorithm
 void Eratosthenes::Sieve()
 {
+	// Increment current number being looked at so long as 
+	// it is less than sqrt of limit (or itself squared is less than limit)
 	for (int p = 2; p*p <= limit; p++)
 	{
 		// If prime[p] is not checked/prime
@@ -42,21 +39,24 @@ void Eratosthenes::Sieve()
 	} // end run loop
 }
 
-
 // Convert bools list into int list of prime numbers and write to file
 void Eratosthenes::GatherResults()
 {
 	// Open file for writing
 	ofstream primeFile("EratosthenesPrimes.txt", ofstream::out);
+	// Go through all indices in bools list
 	for (int p = 2; p <= limit; p++)
 	{
+		// If it is marked true
 		if (primes[p])
 		{
+			// Write this prime to the file
 			primeFile << p << endl;
 		}
 	}
-
 }
+
+
 
 // Perform prime number gen algorithm
 // OLD = original implementation before refactoring

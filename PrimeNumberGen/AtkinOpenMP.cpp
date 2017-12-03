@@ -22,18 +22,19 @@ void AtkinOpenMP::Setup()
 // Sieve of Atkin algorithm optimized with openMP
 void AtkinOpenMP::Sieve()
 {
+	// OpenMP prefers num < sqrt(limit)
+	// rather than num*num < limit
 	int rootLimit = ceil(sqrt(limit));
-
+	// Find number of supported threads
 	auto threadCount = thread::hardware_concurrency();
-
+// OpenMP parallelization
 #pragma omp parallel for num_threads(threadCount)
+	// This is normal Atkin logic found in Atkin.cpp sieve()
 	for (int x = 1; x <= rootLimit; x++)
 	{
 		for (int y = 1; y <= rootLimit; y++)
 		{
-			// This number being considered
 			int n = (4 * x * x) + (y * y);
-			// Check for a, b, c as above
 			if (n <= limit && (n % 12 == 1 || n % 12 == 5))
 				primes[n] = true;
 
@@ -47,8 +48,6 @@ void AtkinOpenMP::Sieve()
 				if (x > y && n <= limit && n % 12 == 11)
 					primes[n] = true;
 			}
-
-
 		} // end for y
 	} // end for x
 
@@ -69,20 +68,20 @@ void AtkinOpenMP::Sieve()
 // Convert bool list to int results list, write to file
 void AtkinOpenMP::GatherResults()
 {
-	// Write data to file
+	// Open file for writing
 	ofstream primeFile("AtkinOMPPrimes.txt", ofstream::out);
 
 	// 2 and 3 are known to be prime, and omitted from test
-	//result.push_back(2), result.push_back(3);
 	primeFile << 2 << endl;
 	primeFile << 3 << endl;
 
-	// Convert from bools to ints 
+	// Go through numbers 5 til limit
 	for (int i = 5; i < limit; i++)
 	{
+		// If marked as prime
 		if (primes[i])
 		{
-			//result.push_back(i);
+			// Write current number, i, to file
 			primeFile << i << endl;
 		}
 	}

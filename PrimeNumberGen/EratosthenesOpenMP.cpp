@@ -12,8 +12,9 @@ EratosthenesOpenMP::EratosthenesOpenMP(int n)
 // Sets up sieve requirements; bool primes list
 void EratosthenesOpenMP::Setup()
 {
-	// Prep primes bool list
+	// In case of any previous runs
 	primes.clear();
+	// Set list size and values 
 	primes = vector<bool>(limit + 1, true);
 }
 
@@ -48,14 +49,14 @@ void EratosthenesOpenMP::GatherResults()
 {
 	// Open file for writing
 	ofstream primeFile("EratosthenesOMPPrimes.txt", ofstream::out);
-	// Turn bools list into prime numbers result list
-	// (2n)
+	// Go through numbers 2 up to and including limit
 	for (int p = 2; p <= limit; p++)
 	{
+		// If marked as prime
 		if (primes[p])
 		{
+			// Write current number, p, to file
 			primeFile << p << endl;
-			//result.push_back(p);
 		}
 	}
 }

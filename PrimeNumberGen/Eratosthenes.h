@@ -15,7 +15,8 @@ public:
 	int limit;
 	// Hold a list of bools representing numbers til n (test limit)
 	vector<bool> primes;
-	// List of final prime numbers
+
+	// List of final prime numbers - used for debugging (not used in final imp)
 	vector<int> result;
 
 	// Prepare the primes bools list

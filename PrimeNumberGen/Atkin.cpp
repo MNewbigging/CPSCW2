@@ -20,6 +20,7 @@ void Atkin::Setup()
 // The sieve of atkin algorithm
 void Atkin::Sieve()
 {
+	// Go through numbers 1 til sqrt(limit) (same as this number squared and limit)
 	for (int x = 1; x*x <= limit; x++)
 	{
 		for (int y = 1; y*y <= limit; y++)
@@ -65,16 +66,16 @@ void Atkin::GatherResults()
 	ofstream primeFile("AtkinPrimes.txt", ofstream::out);
 
 	// 2 and 3 are known to be prime, and omitted from test
-	result.push_back(2), result.push_back(3);
 	primeFile << 2 << endl;
 	primeFile << 3 << endl;
 
-	// Convert from bools to ints 
+	// Go through numbers 5 to limit
 	for (int i = 5; i < limit; i++)
 	{
+		// If number is marked as prime
 		if (primes[i])
 		{
-			result.push_back(i);
+			// Write it to file
 			primeFile << i << endl;
 		}
 			
@@ -87,6 +88,7 @@ void Atkin::GatherResults()
 
 
 // The sieve of atkin algorithm 
+// OLD = original implementation before refactoring
 void Atkin::OLDSieve()
 {
 	// 2 and 3 are known to be prime, and omitted from test

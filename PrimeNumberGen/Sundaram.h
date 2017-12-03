@@ -16,7 +16,7 @@ public:
 	int nNew;
 	// Hold a list of bools representing numbers til test limit
 	vector<bool> primes;
-	// List of final prime numbers
+	// List of final prime numbers - used for debugging (not included in final imp)
 	vector<int> result;
 
 	// Prepare bools list for alg

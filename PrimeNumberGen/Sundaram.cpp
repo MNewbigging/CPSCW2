@@ -24,10 +24,13 @@ void Sundaram::Setup()
 // Run sieve of sundaram algorithm
 void Sundaram::Sieve()
 {
+	// Iterate through numbers from 1 to half of overall test limit
 	for (int i = 1; i < nNew; ++i)
 	{
+		// For each i, go through numbers j=i til limit as shown
 		for (int j = i; j <= (nNew - i) / (2 * i + 1); ++j)
 		{
+			// Mark all numbers of form i+j+2ij as non prime
 			primes[i + j + 2 * i * j] = false;
 		}
 	}
@@ -36,22 +39,25 @@ void Sundaram::Sieve()
 // Convert primes bools list to ints list, write to file
 void Sundaram::GatherResults()
 {
+	// Open file for writing
 	ofstream primeFile("SundaramPrimes.txt", ofstream::out);
-	// Convert bools to ints. 2 is assumed
-	result.push_back(2);
+	// Prime number 2 is assumed
 	primeFile << 2 << endl;
+	// Go through numbers 1 to half limit as with above sieve method
 	for (int i = 1; i <= nNew; i++)
 	{
+		// If number is marked as prime
 		if (primes[i])
 		{
+			// Write it to file (prime number is index of bools list *2 + 1)
 			primeFile << 2 * i + 1 << endl;
-			result.push_back(2 * i + 1);
 		}
 	}
 }
 
 
 // The sieve of sundaram algorithm
+// OLD = original implementation before refactoring
 void Sundaram::OLDSieve()
 {
 	// Half n

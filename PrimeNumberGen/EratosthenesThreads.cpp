@@ -14,6 +14,7 @@ void EratosthenesThreads::Setup()
 }
 
 // First threaded approach - gives 4 additional incorrect prime numbers :(
+// NOT USED IN FINAL IMPLEMENTATION
 void EratosthenesThreads::Sieve()
 {
 
@@ -73,6 +74,7 @@ void EratosthenesThreads::Sieve()
 }
 
 // Thread task - cross out multiples of current number in alg
+// NOT USED IN FINAL IMPLEMENTATION
 void EratosthenesThreads::ThreadSieve(int start, int end)
 {
 	// Perform given allotment of iterations
@@ -93,6 +95,7 @@ void EratosthenesThreads::ThreadSieve(int start, int end)
 
 
 // Second threaded approach
+// NOT USED IN FINAL IMPLEMENTATION
 void EratosthenesThreads::Sieve2()
 {
 	for (int p = 2; p*p <= limit; p+=4)
@@ -116,6 +119,7 @@ void EratosthenesThreads::Sieve2()
 }
 
 // Second threaded approach - thread task
+// NOT USED IN FINAL IMPLEMENTATION
 void EratosthenesThreads::ThreadCrossOutMultiples(int p)
 {
 	// Update all multiples of p
@@ -127,12 +131,14 @@ void EratosthenesThreads::ThreadCrossOutMultiples(int p)
 }
 
 
-// Third threads approach
+// Third threads approach - this gives correct results
 void EratosthenesThreads::Sieve3()
 {
+	// Unfortunately, using supported number of threads gives incorrect results
 	//threadCount = thread::hardware_concurrency();
-	threadCount = 2;
+	threadCount = 2; // 2 threads always works
 
+	// Go through numbers 2 til sqrt(limit) / or number squared til limit
 	for (int p = 2; p*p <= limit; p++)
 	{		
 		// If prime[p] is not checked/prime
@@ -156,7 +162,7 @@ void EratosthenesThreads::Sieve3()
 				end += workChunk * p;
 				if (end > limit)
 					end = limit;
-				// thread
+				// assign task to thread
 				threads.push_back(thread(&EratosthenesThreads::ThreadMultiples, this, p, start, end));
 				// Update start point for next thread
 				start = end;
@@ -170,10 +176,11 @@ void EratosthenesThreads::Sieve3()
 	} // end run loop
 }
 
-// Thread task
+// Thread task - crosses out multiples of given number num
 void EratosthenesThreads::ThreadMultiples(int num, int start, int end)
 {
-
+	// Begin at given start index, up to and including given end index
+	// Increment by given multiple number num
 	for (int i = start; i <= end; i += num)
 	{
 		// This is not a prime
@@ -187,15 +194,14 @@ void EratosthenesThreads::GatherResults()
 {
 	// Open file for writing
 	ofstream primeFile("EratosthenesThreadsPrimes.txt", ofstream::out);
-	// Turn bools list into prime numbers result list
-	// (2n)
+	// Go through numbers 2 up to and including limit
 	for (int p = 2; p <= limit; p++)
 	{
+		// If this bool is true
 		if (primes[p])
 		{
+			// Write prime (current index) to file
 			primeFile << p << endl;
-
-			result.push_back(p);
 		}
 	}
 }

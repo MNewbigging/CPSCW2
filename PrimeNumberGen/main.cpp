@@ -29,16 +29,7 @@ int main()
 	int n3 = 500000000; // half bil
 	int n4 = 1000000000; // billion
 
-
-	// Sundaram threads are definitely ok
-	// Atkin and erat not so (at hardware concurrency, at 2 threads they're ok)
-	EratosthenesThreads e(n1);
-	e.Setup();
-	e.Sieve3();
-	e.GatherResults();
-
-	// Erat and Sundaram OMP looks ok - check at 1 billion
-	// Atkin definitely isn't ok
+	
 
 	
 
